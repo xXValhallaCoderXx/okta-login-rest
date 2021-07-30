@@ -1,13 +1,25 @@
-import { useEffect } from "react";
-import { useOktaAuth } from "@okta/okta-react";
+import { Switch, Route } from "react-router-dom";
+import ViewPage from "./view";
+import EditPage from "./edit";
+import NavHeader from "../../shared/components/nav-header";
 
-const ProfileContainer = () => {
-  const { oktaAuth, authState } = useOktaAuth();
-
-  useEffect(() => {
-    oktaAuth.session.get().then((res) => console.log("SESSION: ", res));
-  }, []);
-  return <div>PROFILE PAGE</div>;
+const ProfileRootRoutes = () => {
+  return (
+    <>
+      <NavHeader />
+      <Switch>
+        <Route path="/profile/view">
+          <ViewPage />
+        </Route>
+        <Route path="/profile/edit">
+          <EditPage />
+        </Route>
+        <Route path="/">
+          <ViewPage />
+        </Route>
+      </Switch>
+    </>
+  );
 };
 
-export default ProfileContainer;
+export default ProfileRootRoutes;

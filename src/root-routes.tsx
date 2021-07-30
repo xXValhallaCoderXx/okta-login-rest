@@ -1,23 +1,25 @@
 import { Switch, Route } from "react-router-dom";
-import { LoginPage, ProfilePage, RegisterPage } from "./pages";
-import { SecureRoute } from "@okta/okta-react";
-import { LoginCallback } from "@okta/okta-react";
 import useOktaManager from "./hooks/use-okta-manager";
+import { AuthModule, ProfileModule } from "./pages";
+import ProfileView from "./pages/profile/view";
+import { SecureRoute } from "@okta/okta-react";
 
 const RootRoutes = () => {
   useOktaManager();
   return (
     <Switch>
-      <Route path="/" exact>
-        <LoginPage />
+      <Route path="/auth">
+        <AuthModule />
       </Route>
-      <Route path="/login/callback" component={LoginCallback} />
-      <Route path="/register" exact>
-        <RegisterPage />
-      </Route>
-      <SecureRoute path="/profile" exact>
-        <ProfilePage />
+      <SecureRoute path="/profile">
+        <ProfileModule />
       </SecureRoute>
+      <SecureRoute path="/test">
+        <ProfileView />
+      </SecureRoute>
+      <Route path="/">
+        <AuthModule />
+      </Route>
     </Switch>
   );
 };

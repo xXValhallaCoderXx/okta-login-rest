@@ -1,3 +1,2 @@
-export {default as LoginPage} from "./login";
-export {default as ProfilePage} from "./profile";
-export {default as RegisterPage} from "./register";
+export { default as AuthModule } from "./auth";
+export { default as ProfileModule } from "./profile";

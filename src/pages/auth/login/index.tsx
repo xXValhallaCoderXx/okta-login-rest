@@ -2,18 +2,11 @@ import { Redirect } from "react-router";
 import styles from "./page-one.module.css";
 import { useOktaAuth } from "@okta/okta-react";
 
-import OktaSignInWidget from "../../components/okta-sign-in-widget";
-import { oktaSignInConfig } from "../../config/okta-config";
+import OktaSignInWidget from "../../../shared/components/okta-sign-in-widget";
+import { oktaSignInConfig } from "../../../config/okta-config";
 
 const LoginContainer = () => {
   const { oktaAuth, authState } = useOktaAuth();
-  //   const history = useHistory();
-
-  // useEffect(() => {
-  //     if(authState && authState.isAuthenticated){
-  //         history.push("")
-  //     }
-  // }, [authState])
 
   const onSuccess = (tokens: any) => {
     console.log("SUCCESS: ", tokens);
